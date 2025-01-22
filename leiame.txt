@@ -10,3 +10,14 @@ sudo apt-get install -y dotnet-sdk-3.1
 # Instalar Mono e XSP4
 sudo apt install -y mono-complete
 sudo apt install -y mono-xsp4
+
+
+#zerar tudo pra rodar
+sudo locale-gen pt_BR.UTF-8
+sudo update-locale LANG=pt_BR.UTF-8 LC_ALL=pt_BR.UTF-8
+
+# Limpa e executa novamente
+rm -rf obj/
+rm -rf bin/
+chmod +x build-and-run.sh prepare-mono.sh
+./build-and-run.sh

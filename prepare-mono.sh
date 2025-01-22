@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Configura o ambiente para UTF-8
+export LANG=pt_BR.UTF-8
+export LC_ALL=pt_BR.UTF-8
+
 # Diretório do projeto
 PROJECT_DIR=$(pwd)
 DEPLOY_DIR="$PROJECT_DIR/bin/Debug/net472"
@@ -13,11 +17,11 @@ mkdir -p "$DEPLOY_DIR/App_Code/Models"
 # Compila o projeto
 dotnet build -f net472
 
-# Copia os arquivos necessários
-cp -r "$PROJECT_DIR/Default.aspx" "$DEPLOY_DIR/"
-cp -r "$PROJECT_DIR/Default.aspx.cs" "$DEPLOY_DIR/"
-cp -r "$PROJECT_DIR/Default.aspx.designer.cs" "$DEPLOY_DIR/"
-cp -r "$PROJECT_DIR/web.config" "$DEPLOY_DIR/"
+# Copia os arquivos necessários preservando a codificação
+cp -p "$PROJECT_DIR/Default.aspx" "$DEPLOY_DIR/"
+cp -p "$PROJECT_DIR/Default.aspx.cs" "$DEPLOY_DIR/"
+cp -p "$PROJECT_DIR/Default.aspx.designer.cs" "$DEPLOY_DIR/"
+cp -p "$PROJECT_DIR/web.config" "$DEPLOY_DIR/"
 cp -r "$PROJECT_DIR/App_Code" "$DEPLOY_DIR/"
 
 # Copia os assemblies compilados

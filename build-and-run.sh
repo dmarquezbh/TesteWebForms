@@ -18,11 +18,16 @@ function check_xsp4() {
     fi
 }
 
+# Configura o ambiente para UTF-8
+export LANG=pt_BR.UTF-8
+export LC_ALL=pt_BR.UTF-8
+export MONO_IOMAP=all
+
 # Verifica requisitos
 if ! check_mono; then
     echo "Instalando Mono..."
     sudo apt-get update
-    sudo apt-get install -y mono-complete
+    sudo apt-get install -y mono-complete language-pack-pt
 fi
 check_xsp4
 
