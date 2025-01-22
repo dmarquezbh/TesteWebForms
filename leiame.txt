@@ -1,0 +1,12 @@
+# Instalar .NET 8 SDK
+wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-8.0
+
+# Instalar .NET Core 3.1 SDK
+sudo apt-get install -y dotnet-sdk-3.1
+
+# Instalar Mono e XSP4
+sudo apt install -y mono-complete
+sudo apt install -y mono-xsp4
