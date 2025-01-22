@@ -3,8 +3,11 @@
     <TargetFrameworks>net8.0;netcoreapp3.1;net472</TargetFrameworks>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <!-- Configurações específicas por framework -->
@@ -72,13 +75,7 @@
 
   <!-- Arquivos de conteúdo -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-      <Content Include="**\*.aspx">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Include="**\*.css">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Include="**\*.js">
+      <Content Include="Default.aspx">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="web.config">

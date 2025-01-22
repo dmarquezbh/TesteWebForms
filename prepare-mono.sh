@@ -16,9 +16,12 @@ dotnet build -f net472
 cp -r "$PROJECT_DIR/Default.aspx" "$DEPLOY_DIR/"
 cp -r "$PROJECT_DIR/web.config" "$DEPLOY_DIR/"
 
-# Copia os assemblies compilados para a pasta bin
-cp -r "$DEPLOY_DIR/TesteWebForms.dll" "$DEPLOY_DIR/bin/"
-cp -r "$DEPLOY_DIR/TesteWebForms.pdb" "$DEPLOY_DIR/bin/"
+# Copia os assemblies compilados
+if [ -f "$DEPLOY_DIR/TesteWebForms.dll" ]; then
+    mkdir -p "$DEPLOY_DIR/bin"
+    cp "$DEPLOY_DIR/TesteWebForms.dll" "$DEPLOY_DIR/bin/"
+    cp "$DEPLOY_DIR/TesteWebForms.pdb" "$DEPLOY_DIR/bin/"
+fi
 
 # Define permissões
 chmod -R 755 "$DEPLOY_DIR"

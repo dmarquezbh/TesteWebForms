@@ -27,15 +27,14 @@ fi
 check_xsp4
 
 echo "Building and running with Mono..."
+
 # Limpa os arquivos anteriores
 rm -rf bin/Debug/net472
 
-# Compila
+# Compila e prepara o ambiente
 dotnet build -f net472
-
-# Prepara o ambiente
 ./prepare-mono.sh
 
 # Move para o diretório correto e executa
 cd bin/Debug/net472
-xsp4 --port $PORT --applications /:. --verbose
+xsp4 --port $PORT --applications /:. --verbose --nonstop

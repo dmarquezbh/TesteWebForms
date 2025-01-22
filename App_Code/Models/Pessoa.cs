@@ -1,6 +1,6 @@
 using System;
 
-namespace TesteWebforms
+namespace TesteWebforms.Models
 {
     public class Pessoa
     {
