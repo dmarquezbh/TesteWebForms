@@ -1,46 +1,36 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-#if NETFRAMEWORK
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-#endif
 
 namespace TesteWebforms
 {
-    public partial class Default : 
-#if NETFRAMEWORK
-        System.Web.UI.Page
-#else
-        Microsoft.AspNetCore.Mvc.RazorPages.PageModel
-#endif
+    public partial class Default : System.Web.UI.Page
     {
-        // Declare os controles explicitamente
-        // protected HtmlForm form1;
-        // protected Label lblName;
-        // protected TextBox txtName;
-        // protected Button btnAdd;
-        // protected Panel pnlMessage;
-        // protected Literal litMessage;
-        // protected GridView gvPessoas;
-        // protected Label lblDateTime;
-        // protected Timer tmrDateTime;
-        // protected ScriptManager ScriptManager1;
-        // protected UpdatePanel upDateTime;
-        // protected Label lblCurrentTime;
+        // Declaração explícita dos controles
+        protected HtmlForm form1;
+        protected Label lblName;
+        protected TextBox txtName;
+        protected Button btnAdd;
+        protected Panel pnlMessage;
+        protected Literal litMessage;
+        protected GridView gvPessoas;
+        protected Label lblDateTime;
+        protected Timer tmrDateTime;
+        protected ScriptManager ScriptManager1;
+        protected UpdatePanel upDateTime;
+        protected Label lblCurrentTime;
 
         private static List<Pessoa> _pessoas = new List<Pessoa>();
         private static int _nextId = 1;
 
-#if NETFRAMEWORK
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Adiciona alguns dados de exemplo se a lista estiver vazia
                 if (!_pessoas.Any())
                 {
                     _pessoas.Add(new Pessoa { Id = _nextId++, Nome = "João Silva", DataCadastro = DateTime.Now.AddDays(-5) });
@@ -59,7 +49,7 @@ namespace TesteWebforms
             {
                 if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
-                    ShowMessage("Por favor, informe um nome.", false);
+                    ShowMessage("Por favor, informe um nome...", false);
                     return;
                 }
 
@@ -120,6 +110,5 @@ namespace TesteWebforms
             gvPessoas.DataSource = _pessoas.OrderByDescending(p => p.DataCadastro);
             gvPessoas.DataBind();
         }
-#endif
     }
 }

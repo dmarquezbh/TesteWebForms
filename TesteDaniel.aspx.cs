@@ -1,24 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
-namespace TesteWebforms  // Adicione esta linha
+public partial class TesteDaniel : System.Web.UI.Page
 {
-    public partial class TesteDaniel : System.Web.UI.Page
+    // Declaração explícita dos controles
+    protected HtmlForm form1;
+    protected Label Label1;
+    protected Button Button1;
+
+    protected void Page_Load(object sender, EventArgs e)
     {
-        
-        protected void Page_Load(object sender, EventArgs e)
-        {
+    }
 
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Label1.Text = DateTime.Now.ToString("dd/mm/yyyy HH:mm:ss.fffff");
-        }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Label1.Text = "daniel " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fffff");
     }
 }

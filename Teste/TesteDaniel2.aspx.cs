@@ -4,11 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace TesteWebforms.Teste
 {
     public partial class TesteDaniel2 : System.Web.UI.Page
     {
+        protected HtmlForm form1;
+       
+        protected TextBox TextBox1;
+
+        protected Button Button1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TesteDaniel.aspx.cs" Inherits="TesteWebforms.TesteDaniel" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TesteDaniel.aspx.cs" Inherits="TesteDaniel" %>
 
 <!DOCTYPE html>
 
