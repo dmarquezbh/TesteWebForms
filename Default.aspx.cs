@@ -17,7 +17,6 @@ namespace TesteWebforms
         Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 #endif
     {
-        // Lista estática para simular um banco de dados
         private static List<Pessoa> _pessoas = new List<Pessoa>();
         private static int _nextId = 1;
 
@@ -107,12 +106,5 @@ namespace TesteWebforms
             gvPessoas.DataBind();
         }
 #endif
-    }
-
-    public class Pessoa
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public DateTime DataCadastro { get; set; }
     }
 }

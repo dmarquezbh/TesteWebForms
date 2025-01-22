@@ -71,35 +71,26 @@
   </ItemGroup>
 
   <!-- Arquivos de conteúdo -->
-  <!-- <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Content Include="**\*.aspx" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="**\*.Master" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="**\*.css" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="**\*.js" CopyToOutputDirectory="PreserveNewest" />
-    <Compile Include="**\*.aspx.cs" />
-    <Compile Include="**\*.aspx.designer.cs" />
-    <Compile Include="**\*.Master.cs" />
-    <Compile Include="**\*.Master.designer.cs" />
-  </ItemGroup> -->
-  <ItemGroup>
-    <Content Include="**\*.aspx">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="**\*.Master">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="**\*.css">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="**\*.js">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Compile Include="**\*.aspx.cs" />
-    <Compile Include="**\*.aspx.designer.cs" />
-    <Compile Include="**\*.Master.cs" />
-    <Compile Include="**\*.Master.designer.cs" />
-    <Compile Include="Program.cs" />
-</ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+      <Content Include="**\*.aspx">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="**\*.css">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="**\*.js">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="web.config">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Compile Include="Default.aspx.cs">
+          <DependentUpon>Default.aspx</DependentUpon>
+      </Compile>
+      <Compile Include="Default.aspx.designer.cs">
+          <DependentUpon>Default.aspx</DependentUpon>
+      </Compile>
+      <Compile Include="Program.cs" />
+      <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
 </Project>
