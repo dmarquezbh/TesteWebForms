@@ -6,12 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
-namespace TesteWebforms.Teste
+namespace TesteWebforms
 {
     public partial class TesteDaniel2 : System.Web.UI.Page
     {
         protected HtmlForm form1;
-       
+
         protected TextBox TextBox1;
 
         protected Button Button1;

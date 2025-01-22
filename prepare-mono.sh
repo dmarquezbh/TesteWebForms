@@ -19,14 +19,18 @@ dotnet build -f net472
 
 # Função para copiar arquivos ASPX e seus code-behind mantendo a estrutura de diretórios
 copy_aspx_files() {
-    local src_dir="\$1"
-    local dest_dir="\$2"
+    local src_dir="$1"
+    local dest_dir="$2"
     
     # Encontra todos os arquivos .aspx e copia mantendo a estrutura
     find "$src_dir" -name "*.aspx" | while read aspx_file; do
         # Obtém o caminho relativo
         rel_path=${aspx_file#$src_dir/}
         dir_path=$(dirname "$rel_path")
+        
+        echo "Processando $aspx_file"
+        echo "Caminho relativo: $rel_path"
+        echo "Diretório: $dir_path"
         
         # Cria o diretório de destino se necessário
         mkdir -p "$dest_dir/$dir_path"
@@ -35,12 +39,16 @@ copy_aspx_files() {
         cp -p "$aspx_file" "$dest_dir/$rel_path"
         cp -p "${aspx_file}.cs" "$dest_dir/${rel_path}.cs"
         
+        echo "Copiado $aspx_file para $dest_dir/$rel_path"
+        echo "Copiado ${aspx_file}.cs para $dest_dir/${rel_path}.cs"
+        
         # Cria link simbólico para versão lowercase
         cd "$dest_dir/$dir_path"
         base_name=$(basename "$rel_path")
         lower_name=$(echo "$base_name" | tr '[:upper:]' '[:lower:]')
         if [ "$base_name" != "$lower_name" ]; then
             ln -sf "$base_name" "$lower_name"
+            echo "Criado link simbólico $lower_name -> $base_name"
         fi
         cd - > /dev/null
     done
