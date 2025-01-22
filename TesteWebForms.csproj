@@ -12,27 +12,13 @@
     <DefineConstants>NETCORE</DefineConstants>
   </PropertyGroup>
 
-  <!-- <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
-    <DefineConstants>NETFRAMEWORK</DefineConstants>
-    <OutputType>WinExe</OutputType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <UseWindowsForms>true</UseWindowsForms>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup> -->
-  <!-- <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
-      <DefineConstants>NETFRAMEWORK</DefineConstants>
-      <OutputType>Library</OutputType>
-      <OutputPath>bin\Debug\net472</OutputPath>
-      <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-      <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup> -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
-      <DefineConstants>NETFRAMEWORK</DefineConstants>
-      <OutputType>Library</OutputType>
-      <OutputPath>bin\Debug\net472</OutputPath>
-      <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-      <UseWebProjectPaths>true</UseWebProjectPaths>
-  </PropertyGroup>
+    <DefineConstants>NETFRAMEWORK</DefineConstants>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin\Debug\net472</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseWebProjectPaths>true</UseWebProjectPaths>
+</PropertyGroup>
 
   <!-- Referências específicas para .NET Framework (Mono) -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">

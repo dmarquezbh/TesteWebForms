@@ -1,8 +1,10 @@
 using System;
 
+
 #if NETFRAMEWORK
 using System.Web;
 #else
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +22,6 @@ namespace TesteWebforms
         public static void Main()
         {
             Console.WriteLine("Running under .NET Framework/Mono");
-            System.Threading.Thread.Sleep(-1); // Mantém o programa rodando
         }
     }
 #else
