@@ -13,6 +13,7 @@ rm -rf "$DEPLOY_DIR"
 mkdir -p "$DEPLOY_DIR"
 mkdir -p "$DEPLOY_DIR/bin"
 mkdir -p "$DEPLOY_DIR/App_Code/Models"
+mkdir -p "$DEPLOY_DIR/Teste"  # Garante que a pasta Teste existe
 
 # Compila o projeto
 dotnet build -f net472
@@ -23,7 +24,7 @@ copy_aspx_files() {
     local dest_dir="$2"
     
     # Encontra todos os arquivos .aspx e copia mantendo a estrutura
-    find "$src_dir" -name "*.aspx" | while read aspx_file; do
+    find "$src_dir" -name "*.aspx" -type f | while read aspx_file; do
         # Obtém o caminho relativo
         rel_path=${aspx_file#$src_dir/}
         dir_path=$(dirname "$rel_path")
@@ -37,18 +38,20 @@ copy_aspx_files() {
         
         # Copia o arquivo .aspx e seu code-behind
         cp -p "$aspx_file" "$dest_dir/$rel_path"
-        cp -p "${aspx_file}.cs" "$dest_dir/${rel_path}.cs"
+        if [ -f "${aspx_file}.cs" ]; then
+            cp -p "${aspx_file}.cs" "$dest_dir/${rel_path}.cs"
+            echo "Copiado ${aspx_file}.cs para $dest_dir/${rel_path}.cs"
+        fi
         
         echo "Copiado $aspx_file para $dest_dir/$rel_path"
-        echo "Copiado ${aspx_file}.cs para $dest_dir/${rel_path}.cs"
         
-        # Cria link simbólico para versão lowercase
+        # Cria link simbólico para versão lowercase no diretório correto
         cd "$dest_dir/$dir_path"
         base_name=$(basename "$rel_path")
         lower_name=$(echo "$base_name" | tr '[:upper:]' '[:lower:]')
         if [ "$base_name" != "$lower_name" ]; then
             ln -sf "$base_name" "$lower_name"
-            echo "Criado link simbólico $lower_name -> $base_name"
+            echo "Criado link simbólico $lower_name -> $base_name em $dir_path"
         fi
         cd - > /dev/null
     done
@@ -76,6 +79,8 @@ echo "Arquivos na pasta bin:"
 ls -la "$DEPLOY_DIR/bin"
 echo "Arquivos na pasta App_Code:"
 ls -la "$DEPLOY_DIR/App_Code"
+echo "Arquivos na pasta Teste:"
+ls -la "$DEPLOY_DIR/Teste"
 
 # Lista todos os arquivos recursivamente
 echo "Lista completa de arquivos:"
