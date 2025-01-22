@@ -3,6 +3,8 @@
 # Configura o ambiente para UTF-8
 export LANG=pt_BR.UTF-8
 export LC_ALL=pt_BR.UTF-8
+export MONO_IOMAP=all
+export MONO_ENCODING=utf-8
 
 # Função para verificar se o Mono está instalado
 check_mono() {
@@ -36,13 +38,12 @@ DEPLOY_DIR="$PROJECT_DIR/bin/Debug/net472"
 echo "Iniciando XSP4..."
 cd "$DEPLOY_DIR"
 
-# Parâmetros importantes do XSP4:
-xsp4 --port 5000 \
+# Configura o XSP4 para usar UTF-8
+MONO_OPTIONS="--debug" xsp4 \
+     --port 5000 \
      --address 0.0.0.0 \
      --root "$DEPLOY_DIR" \
      --applications /:"$DEPLOY_DIR" \
      --appconfigdir "$DEPLOY_DIR" \
      --nonstop \
-     --verbose \
-     --master \
-     --applications-map="$DEPLOY_DIR/web.config"
+     --verbose
