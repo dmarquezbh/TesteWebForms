@@ -17,9 +17,11 @@ mkdir -p "$DEPLOY_DIR/App_Code/Models"
 # Compila o projeto
 dotnet build -f net472
 
-# Copia os arquivos necessários preservando a codificação
-cp -p "$PROJECT_DIR/Default.aspx" "$DEPLOY_DIR/"
-cp -p "$PROJECT_DIR/Default.aspx.cs" "$DEPLOY_DIR/"
+# Copia todos os arquivos .aspx e seus code-behind
+find "$PROJECT_DIR" -maxdepth 1 -name "*.aspx" -exec cp -p {} "$DEPLOY_DIR/" \;
+find "$PROJECT_DIR" -maxdepth 1 -name "*.aspx.cs" -exec cp -p {} "$DEPLOY_DIR/" \;
+
+# Copia web.config e App_Code
 cp -p "$PROJECT_DIR/web.config" "$DEPLOY_DIR/"
 cp -r "$PROJECT_DIR/App_Code" "$DEPLOY_DIR/"
 
@@ -30,8 +32,14 @@ if [ -f "$DEPLOY_DIR/TesteWebForms.dll" ]; then
     cp "$DEPLOY_DIR/TesteWebForms.pdb" "$DEPLOY_DIR/bin/"
 fi
 
-# Cria link simbólico para versão lowercase
-ln -sf "$DEPLOY_DIR/Default.aspx" "$DEPLOY_DIR/default.aspx"
+# Cria links simbólicos para versões lowercase
+for f in "$DEPLOY_DIR"/*.aspx; do
+    filename=$(basename "$f")
+    lowercase=$(echo "$filename" | tr '[:upper:]' '[:lower:]')
+    if [ "$filename" != "$lowercase" ]; then
+        ln -sf "$filename" "$DEPLOY_DIR/$lowercase"
+    fi
+done
 
 # Define permissões
 chmod -R 755 "$DEPLOY_DIR"

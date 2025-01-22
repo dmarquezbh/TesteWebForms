@@ -74,20 +74,24 @@
   </ItemGroup>
 
   <!-- Arquivos de conteúdo -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-      <Content Include="Default.aspx">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Include="web.config">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Compile Include="App_Code\**\*.cs">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Compile>
-      <Compile Include="Default.aspx.cs">
-          <DependentUpon>Default.aspx</DependentUpon>
-      </Compile>
-      <Compile Include="Program.cs" />
-      <Compile Include="AssemblyInfo.cs" />
-  </ItemGroup>
+<ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <Content Include="*.aspx">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="web.config">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="App_Code\**\*.cs">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="*.aspx.cs">
+        <DependentUpon>%(Filename)</DependentUpon>
+        <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="*.aspx.designer.cs">
+        <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+</ItemGroup>
 </Project>

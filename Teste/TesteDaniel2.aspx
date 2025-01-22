@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TesteDaniel.aspx.cs" Inherits="TesteWebforms.TesteDaniel" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TesteDaniel2.aspx.cs" Inherits="TesteWebforms.Teste.TesteDaniel2" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            Olá!
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </div>
     </form>

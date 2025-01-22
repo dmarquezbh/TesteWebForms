@@ -19,18 +19,18 @@ namespace TesteWebforms
 #endif
     {
         // Declare os controles explicitamente
-        protected HtmlForm form1;
-        protected Label lblName;
-        protected TextBox txtName;
-        protected Button btnAdd;
-        protected Panel pnlMessage;
-        protected Literal litMessage;
-        protected GridView gvPessoas;
-        protected Label lblDateTime;
-        protected Timer tmrDateTime;
-        protected ScriptManager ScriptManager1;
-        protected UpdatePanel upDateTime;
-        protected Label lblCurrentTime;
+        // protected HtmlForm form1;
+        // protected Label lblName;
+        // protected TextBox txtName;
+        // protected Button btnAdd;
+        // protected Panel pnlMessage;
+        // protected Literal litMessage;
+        // protected GridView gvPessoas;
+        // protected Label lblDateTime;
+        // protected Timer tmrDateTime;
+        // protected ScriptManager ScriptManager1;
+        // protected UpdatePanel upDateTime;
+        // protected Label lblCurrentTime;
 
         private static List<Pessoa> _pessoas = new List<Pessoa>();
         private static int _nextId = 1;
