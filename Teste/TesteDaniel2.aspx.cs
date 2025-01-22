@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
-namespace TesteWebforms
+namespace TesteWebforms.Teste
 {
     public partial class TesteDaniel2 : System.Web.UI.Page
     {
