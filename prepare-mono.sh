@@ -20,7 +20,6 @@ dotnet build -f net472
 # Copia os arquivos necessários preservando a codificação
 cp -p "$PROJECT_DIR/Default.aspx" "$DEPLOY_DIR/"
 cp -p "$PROJECT_DIR/Default.aspx.cs" "$DEPLOY_DIR/"
-cp -p "$PROJECT_DIR/Default.aspx.designer.cs" "$DEPLOY_DIR/"
 cp -p "$PROJECT_DIR/web.config" "$DEPLOY_DIR/"
 cp -r "$PROJECT_DIR/App_Code" "$DEPLOY_DIR/"
 
