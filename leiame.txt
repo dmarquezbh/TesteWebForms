@@ -21,3 +21,26 @@ rm -rf obj/
 rm -rf bin/
 chmod +x build-and-run.sh prepare-mono.sh
 ./build-and-run.sh
+
+#Pra fazer build pelo prompt de comando direto
+rm -rf obj/
+rm -rf bin/
+dotnet clean
+dotnet build -f net472
+
+rm -rf obj/
+rm -rf bin/
+dotnet clean
+dotnet build -f netcoreapp3.1
+
+rm -rf obj/
+rm -rf bin/
+dotnet clean
+dotnet build -f net8.0
+
+rm -rf obj/
+rm -rf bin/
+dotnet clean
+dotnet build
+
+
