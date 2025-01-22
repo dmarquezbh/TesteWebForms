@@ -30,6 +30,7 @@ echo "Building and running with Mono..."
 
 # Limpa os arquivos anteriores
 rm -rf bin/Debug/net472
+rm -rf /tmp/*-temp-aspnet-*
 
 # Compila e prepara o ambiente
 dotnet build -f net472

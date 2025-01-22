@@ -81,6 +81,9 @@
       <Content Include="web.config">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <Compile Include="App_Code\**\*.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Compile>
       <Compile Include="Default.aspx.cs">
           <DependentUpon>Default.aspx</DependentUpon>
       </Compile>
